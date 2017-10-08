@@ -43,7 +43,11 @@
             "@development-enable"
         ],
         "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
-        "test": "phpunit"
+        "test": "phpunit",
+        "full-test": [
+            "@cs-check",
+            "@test"
+        ]
     },
     "require-dev": {
         "zendframework/zend-developer-tools": "^1.1.0",
