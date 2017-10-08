@@ -2,7 +2,7 @@ language: php
 php:
   - 7.0
 install:
-  - composer install
+  - composer update
 script:
   - composer run full-test
 before_deploy:
