@@ -14,7 +14,7 @@ script:
 after_success:
   - $(aws ecr get-login --no-include-email)
   - docker build -t rzamana/curriculum .
-  - docker tag rzamana/curriculum $DOCKER_ECR_REPO:$TRAVIS_BUILD
+  - docker tag rzamana/curriculum $DOCKER_ECR_REPO:$TRAVIS_BUILD_NUMBER
   - docker push $DOCKER_ECR_REPO:$TRAVIS_BUILD
   - docker tag rzamana/curriculum $DOCKER_ECR_REPO:latest
   - docker push $DOCKER_ECR_REPO:latest
