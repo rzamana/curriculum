@@ -1,4 +1,5 @@
 # RZamana Curriculum
+[![Build Status](https://travis-ci.org/rzamana/curriculum.svg?branch=master)](https://travis-ci.org/rzamana/curriculum)
 
 ## Introduction
 
