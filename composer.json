@@ -3,7 +3,7 @@
     "description": "Skeleton Application for RZamana curriculum",
     "type": "project",
     "license": "BSD-3-Clause",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "keywords": [
         "curriculum",
         "mvc",
