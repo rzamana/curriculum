@@ -3,6 +3,7 @@
     "description": "Skeleton Application for RZamana curriculum",
     "type": "project",
     "license": "BSD-3-Clause",
+    "version": "0.1.0",
     "keywords": [
         "curriculum",
         "mvc",
@@ -43,10 +44,15 @@
             "@development-enable"
         ],
         "serve": "php -S 0.0.0.0:8080 -t public public/index.php",
-        "test": "phpunit"
+        "test": "phpunit",
+        "full-test": [
+            "@cs-check",
+            "@test"
+        ]
     },
     "require-dev": {
         "zendframework/zend-developer-tools": "^1.1.0",
-        "zendframework/zend-test": "^3.0.1"
+        "zendframework/zend-test": "^3.0.1",
+        "squizlabs/php_codesniffer": "3.*"
     }
 }

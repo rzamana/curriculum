@@ -1,0 +1,26 @@
+sudo: required
+services:
+  - docker
+language: php
+php:
+  - 7.0
+before_install:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+install:
+  - composer update
+script:
+  - composer run full-test
+before_deploy:
+  - APP_VERSION=$(cat composer.json | grep -Po 'version\"\:[ ]*\"\K[0-9.]+')
+  - docker build -t rzamana/curriculum .
+deploy:
+  provider: script
+  script:
+    - $(aws ecr get-login --no-include-email)
+    - docker tag rzamana/curriculum ${DOCKER_ECR_REPO}:${APP_VERSION}.${TRAVIS_BUILD_NUMBER}
+    - docker push ${DOCKER_ECR_REPO}:${APP_VERSION}.${TRAVIS_BUILD_NUMBER}
+    - docker tag rzamana/curriculum ${DOCKER_ECR_REPO}:latest
+    - docker push ${DOCKER_ECR_REPO}:latest
+  on:
+    branch: master

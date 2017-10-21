@@ -10,3 +10,7 @@ RUN apt-get update \
   | php -- --install-dir=/usr/local/bin --filename=composer
 
 WORKDIR /var/www
+
+COPY . .
+
+RUN composer install --optimize-autoloader --no-dev
