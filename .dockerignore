@@ -5,4 +5,5 @@ phpunit.xml.dist
 .gitignore
 .travis.yml
 docker-compose.yml
+vendor/
 data/

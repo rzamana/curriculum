@@ -12,3 +12,5 @@ RUN apt-get update \
 WORKDIR /var/www
 
 COPY . .
+
+RUN composer install --optimize-autoloader --no-dev
