@@ -4,14 +4,13 @@ services:
 language: php
 php:
   - 7.0
-before_install:
-  - pip install --user awscli
-  - export PATH=$PATH:$HOME/.local/bin
 install:
   - composer update
 script:
   - composer run full-test
 after_success:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
   - APP_VERSION=$(cat composer.json | grep -Po 'version\"\:[ ]*\"\K[0-9.]+')
   - docker build -t rzamana/curriculum .
   - travis/docker_push.sh
