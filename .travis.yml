@@ -11,12 +11,7 @@ install:
   - composer update
 script:
   - composer run full-test
-before_deploy:
+after_success:
   - APP_VERSION=$(cat composer.json | grep -Po 'version\"\:[ ]*\"\K[0-9.]+')
   - docker build -t rzamana/curriculum .
-  - git checkout composer.lock
-deploy:
-  provider: script
-  script: travis/deploy.sh
-  on:
-    branch: master
+  - travis/docker_push.sh
