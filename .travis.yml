@@ -16,6 +16,6 @@ before_deploy:
   - docker build -t rzamana/curriculum .
 deploy:
   provider: script
-  script:
+  script: travis/deploy.sh
   on:
     branch: master
