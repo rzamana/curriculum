@@ -11,6 +11,6 @@ script:
 after_success:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
-  - APP_VERSION=$(cat composer.json | grep -Po 'version\"\:[ ]*\"\K[0-9.]+')
+  - eval $(aws ecr get-login --no-include-email)
   - docker build -t rzamana/curriculum .
   - travis/docker_push.sh
