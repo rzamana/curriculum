@@ -14,6 +14,7 @@ script:
 before_deploy:
   - APP_VERSION=$(cat composer.json | grep -Po 'version\"\:[ ]*\"\K[0-9.]+')
   - docker build -t rzamana/curriculum .
+  - git checkout composer.lock
 deploy:
   provider: script
   script: travis/deploy.sh
