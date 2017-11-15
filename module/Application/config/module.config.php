@@ -12,6 +12,22 @@ use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
+    'navigation' => [
+        'default' => [
+            [
+                'label' => 'Home',
+                'route' => 'home',
+            ],
+            [
+                'label' => 'Archer',
+                'route' => 'archer',
+            ],
+            [
+                'label' => 'Developer',
+                'route' => 'developer',
+            ],
+        ]
+    ],
     'router' => [
         'routes' => [
             'home' => [
@@ -23,7 +39,28 @@ return [
                         'action'     => 'index',
                     ],
                 ],
+            ],
+            'archer' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route'    => '/archer',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'index',
+                    ],
+                ],
+            ],
+            'developer' => [
+                'type' => Literal::class,
+                'options' => [
+                    'route'    => '/developer',
+                    'defaults' => [
+                        'controller' => Controller\IndexController::class,
+                        'action'     => 'developer',
+                    ],
+                ],
             ]
+
         ],
     ],
     'controllers' => [
@@ -65,6 +102,7 @@ return [
     'service_manager' => [
         'factories' => [
             \Zend\I18n\Translator\TranslatorInterface::class => \Zend\I18n\Translator\TranslatorServiceFactory::class,
-        ]
+        ],
+        'navigation' => Zend\Navigation\Service\DefaultNavigationFactory::class,
     ],
 ];
