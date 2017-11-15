@@ -11,7 +11,7 @@ use Application\Controller\IndexController;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
-class IndexControllerTest extends AbstractHttpControllerTestCase
+class DeveloperIndexControllerTest extends AbstractHttpControllerTestCase
 {
     public function setUp()
     {
@@ -31,12 +31,12 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
 
     public function testIndexActionCanBeAccessed()
     {
-        $this->dispatch('/', 'GET');
+        $this->dispatch('/developer', 'GET');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('application');
         $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
         $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('home');
+        $this->assertMatchedRouteName('developer');
     }
 
     public function testIndexActionViewModelTemplateRenderedWithinLayout()
@@ -45,17 +45,14 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
         $this->assertQuery('.container .jumbotron');
     }
 
-    public function testInvalidRouteDoesNotCrash()
+    public function testDeveloperStructure()
     {
-        $this->dispatch('/invalid/route', 'GET');
-        $this->assertResponseStatusCode(404);
-    }
-    /**
-     * Tests for archer routes
-     */
-    public function testValidArcherRoute()
-    {
-        $this->dispatch('/archer', 'GET');
-        $this->assertResponseStatusCode(200);
+        $this->dispatch('/developer', 'GET');
+        $this->assertQueryCount('div.container > div.row', 5);
+        $this->assertQueryContentContains('div.container > div.row[1] .panel-title', "Bio");
+        $this->assertQueryContentContains('div.container > div.row[2] .panel-title', "Experience");
+        $this->assertQueryContentContains('div.container > div.row[3] .panel-title', "Education");
+        $this->assertQueryContentContains('div.container > div.row[4] .panel-title', "Skills");
+        $this->assertQueryContentContains('div.container > div.row[5] .panel-title', "Accomplish");
     }
 }
