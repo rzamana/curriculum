@@ -11,7 +11,7 @@ use Application\Controller\IndexController;
 use Zend\Stdlib\ArrayUtils;
 use Zend\Test\PHPUnit\Controller\AbstractHttpControllerTestCase;
 
-class IndexControllerTest extends AbstractHttpControllerTestCase
+class ArcherIndexControllerTest extends AbstractHttpControllerTestCase
 {
     public function setUp()
     {
@@ -31,31 +31,17 @@ class IndexControllerTest extends AbstractHttpControllerTestCase
 
     public function testIndexActionCanBeAccessed()
     {
-        $this->dispatch('/', 'GET');
+        $this->dispatch('/archer', 'GET');
         $this->assertResponseStatusCode(200);
         $this->assertModuleName('application');
         $this->assertControllerName(IndexController::class); // as specified in router's controller name alias
         $this->assertControllerClass('IndexController');
-        $this->assertMatchedRouteName('home');
+        $this->assertMatchedRouteName('archer');
     }
 
     public function testIndexActionViewModelTemplateRenderedWithinLayout()
     {
         $this->dispatch('/', 'GET');
         $this->assertQuery('.container .jumbotron');
-    }
-
-    public function testInvalidRouteDoesNotCrash()
-    {
-        $this->dispatch('/invalid/route', 'GET');
-        $this->assertResponseStatusCode(404);
-    }
-    /**
-     * Tests for archer routes
-     */
-    public function testValidArcherRoute()
-    {
-        $this->dispatch('/archer', 'GET');
-        $this->assertResponseStatusCode(200);
     }
 }
