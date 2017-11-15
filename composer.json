@@ -51,7 +51,7 @@
         ]
     },
     "require-dev": {
-        "zendframework/zend-developer-tools": "^1.1.0",
+        "zendframework/zend-developer-tools": "^1.1",
         "zendframework/zend-test": "^3.0.1",
         "squizlabs/php_codesniffer": "3.*"
     }
