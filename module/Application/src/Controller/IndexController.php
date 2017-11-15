@@ -20,4 +20,8 @@ class IndexController extends AbstractActionController
     {
         return new ViewModel();
     }
+    public function archerAction()
+    {
+        return new ViewModel();
+    }
 }

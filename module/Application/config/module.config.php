@@ -46,7 +46,7 @@ return [
                     'route'    => '/archer',
                     'defaults' => [
                         'controller' => Controller\IndexController::class,
-                        'action'     => 'index',
+                        'action'     => 'archer',
                     ],
                 ],
             ],
