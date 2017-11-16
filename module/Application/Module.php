@@ -9,6 +9,8 @@ namespace Application;
 
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
+use Zend\ModuleManager\ModuleManager;
+use Zend\Mvc\MvcEvent;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
@@ -26,5 +28,22 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
     public function getConfig()
     {
         return include __DIR__ . '/config/module.config.php';
+    }
+
+    public function onBootstrap(MvcEvent $e)
+    {
+        $app = $e->getApplication();
+        $app->getEventManager()->attach(
+            'dispatch',
+            function ($e) {
+                $request = $e->getRequest();
+                if ($request->getQuery('lang') != '') {
+                    $serviceManager = $e->getApplication()->getServiceManager();
+                    $translator = $serviceManager->get(\Zend\I18n\Translator\TranslatorInterface::class);
+                    $translator->setLocale($request->getQuery('lang'));
+                }
+            },
+            100
+        );
     }
 }
