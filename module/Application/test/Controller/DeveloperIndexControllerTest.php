@@ -47,12 +47,23 @@ class DeveloperIndexControllerTest extends AbstractHttpControllerTestCase
 
     public function testDeveloperStructure()
     {
-        $this->dispatch('/developer', 'GET');
+        $this->dispatch('/developer?lang=en_US', 'GET');
         $this->assertQueryCount('div.container > div.row', 5);
         $this->assertQueryContentContains('div.container > div.row[1] .panel-title', "Bio");
         $this->assertQueryContentContains('div.container > div.row[2] .panel-title', "Experience");
         $this->assertQueryContentContains('div.container > div.row[3] .panel-title', "Education");
         $this->assertQueryContentContains('div.container > div.row[4] .panel-title', "Skills");
         $this->assertQueryContentContains('div.container > div.row[5] .panel-title', "Accomplish");
+    }
+
+    public function testDeveloperStructurePTBR()
+    {
+        $this->dispatch('/developer?lang=pt_BR', 'GET');
+        $this->assertQueryCount('div.container > div.row', 5);
+        $this->assertQueryContentContains('div.container > div.row[1] .panel-title', "Bio");
+        $this->assertQueryContentContains('div.container > div.row[2] .panel-title', "Experiência");
+        $this->assertQueryContentContains('div.container > div.row[3] .panel-title', "Educação");
+        $this->assertQueryContentContains('div.container > div.row[4] .panel-title', "Habilidades");
+        $this->assertQueryContentContains('div.container > div.row[5] .panel-title', "Realização");
     }
 }
