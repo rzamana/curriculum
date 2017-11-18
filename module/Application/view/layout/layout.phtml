@@ -38,6 +38,23 @@
                 </div>
                 <div class="collapse navbar-collapse">
                     <?= $this->navigation('navigation')->menu()->setUlClass('nav navbar-nav');?>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="<?= $this->url(null, [], ['force_canonical' => true, 'query' => ['lang' => 'pt_BR']]) ?>">
+                                <img src="/img/pt-br.png" height="12" alt="pt-br" width="18">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->url(null, [], ['force_canonical' => true, 'query' => ['lang' => 'es_ES']]) ?>">
+                                <img src="/img/es.png" height="12" alt="es" width="18">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?= $this->url(null, [], ['force_canonical' => true, 'query' => ['lang' => 'en_US']]) ?>">
+                                <img src="/img/en.png" height="12" alt="en" width="18">
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
