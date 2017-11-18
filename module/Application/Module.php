@@ -37,12 +37,22 @@ class Module implements AutoloaderProviderInterface, ConfigProviderInterface
         $application = $event->getApplication();
         $serviceManager = $application->getServiceManager();
 
+        $viewModel = $event->getViewModel();
+        $viewModel->myRoute = 'home';
+
         $application->getEventManager()->attach(
             'dispatch',
             function ($e) {
-                $serviceManager = $e->getApplication()->getServiceManager();
+                $app = $e->getApplication();
+                $serviceManager = $app->getServiceManager();
 
                 $sessionContainer = new Container('ContainerNamespace');
+
+                $routeMatch = $e->getRouteMatch();
+                $viewModel = $e->getViewModel();
+
+                $routeName = $routeMatch->getMatchedRouteName();
+                $viewModel->myRoute = $routeMatch->getMatchedRouteName();
 
                 $request = $e->getRequest();
                 $lang = 'pt_BR';
