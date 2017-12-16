@@ -8,7 +8,6 @@
 namespace Application;
 
 use Zend\Router\Http\Literal;
-use Zend\Router\Http\Segment;
 use Zend\ServiceManager\Factory\InvokableFactory;
 
 return [
@@ -19,11 +18,11 @@ return [
                 'route' => 'home',
             ],
             [
-                'label' => 'Archer',
+                'label' => 'The Archer',
                 'route' => 'archer',
             ],
             [
-                'label' => 'Developer',
+                'label' => 'The Developer',
                 'route' => 'developer',
             ],
         ]
@@ -88,9 +87,9 @@ return [
         'locale' => 'pt_BR',
         'translation_file_patterns' => [
             [
-                'type'     => 'gettext',
+                'type'     => 'phpArray',
                 'base_dir' => __DIR__ . '/../language',
-                'pattern'  => '%s.mo',
+                'pattern'  => '%s.php',
             ],
         ],
     ],
