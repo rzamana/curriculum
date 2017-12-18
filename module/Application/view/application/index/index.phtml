@@ -13,7 +13,7 @@
                 <p>Since 2015, I became addicted to archery!</p>
                 <p>I won several tournaments, and became the 3rd world best on my category</p>
                 <p>Here you can see all my acomplish on archery, and know a little about myself!</p>
-                <p><a class="btn btn-success pull-right" href="<?= $this->url('archer') ?>">Archer Curriculum &raquo;</a></p>
+                <p><a class="btn btn-success pull-right" href="<?= $this->url('archer') ?>"><?= $this->translate('Archer Curriculum')?> &raquo;</a></p>
             </div>
         </div>
     </div>
@@ -34,9 +34,8 @@
                 <h3 class="panel-title"><?= $this->translate('The Developer') ?></h3>
             </div>
             <div class="panel-body">
-                <p>In 2003 I learned about development and web, since then I learned about PHP, HTML, xHTML, ActionScript, Java, and other languages.</p>
-                <p>Here you can see what I learned and all my projects (including where I worked)!</p>
-                <p><a class="btn btn-success pull-right" href="<?= $this->url('developer') ?>">Developer Curriculum &raquo;</a></p>
+                <?= $this->translate('Resume Bio')?>
+                <p><a class="btn btn-success pull-right" href="<?= $this->url('developer') ?>"><?= $this->translate('Developer Curriculum')?> &raquo;</a></p>
             </div>
         </div>
     </div>
