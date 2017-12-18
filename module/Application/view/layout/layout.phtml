@@ -39,7 +39,6 @@
                         Rafael Zamana Kineippe
                     </a>
                 </div>
-                <?php //die($this->myRoute); ?>
                 <div class="collapse navbar-collapse">
                     <?= $this->navigation('navigation')->menu()->setUlClass('nav navbar-nav');?>
                     <ul class="nav navbar-nav navbar-right">
@@ -56,15 +55,8 @@
                             </a>
                         </li>
                         <li>
-                        <a href="<?= $this->url(
-                                $this->myRoute,
-                                [],
-                                [
-                                    'force_canonical' => true,
-                                    'query' => ['lang' => 'es_ES']
-                                ]
-                            ) ?>">
-                            <img src="/img/es.png" height="12" alt="es" width="18">
+                            <a href="<?= $this->url($this->myRoute, [], ['force_canonical' => true,'query' => ['lang' => 'es_ES']]) ?>">
+                                <img src="/img/es.png" height="12" alt="es" width="18">
                             </a>
                         </li>
                         <li>
